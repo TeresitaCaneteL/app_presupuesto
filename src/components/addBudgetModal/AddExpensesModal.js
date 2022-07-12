@@ -6,18 +6,17 @@ export default function AddExpenseModal({show, handleClose, defaultBudgetId}) {
   const descriptionRef = useRef()
   const amountRef = useRef()
   const budgetIdRef = useRef()
-  const { addExpense, budgets } = useContext(BudgetsContext);
+  const {  addExpense, budgets } = useContext(BudgetsContext);
+  //console.log(budgets, 'hola')
 
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault()
-    addExpense(
-    {
-      description:descriptionRef.current.value,
-      amount: parseFloat(amountRef.current.value),
-      budgetId:budgetIdRef.current.value,
+    addExpense({
+      description: descriptionRef.current.value,
+      amount: parseInt(amountRef.current.value),
+      budgetId: budgetIdRef.current.value,
     })
     handleClose()
-
   }
   return (
 
@@ -31,18 +30,19 @@ export default function AddExpenseModal({show, handleClose, defaultBudgetId}) {
             <Form.Label>Descripcion</Form.Label>
             <Form.Control ref={descriptionRef} type="text" required/>
           </Form.Group>
-          <Form.Group className="mb-3" ref={amountRef} controlId="amount">
+          <Form.Group className="mb-3" controlId="amount">
             <Form.Label>Gasto</Form.Label>
-            <Form.Control  type="number" required min={0} step={1}/>
+            <Form.Control  ref={amountRef} type="number" required min={0} step={1}/>
           </Form.Group>
           <Form.Group className="mb-3" controlId="budgetId">
             <Form.Label>Presupuesto</Form.Label>
-            <Form.Select >
-
-            <option value="1">One</option>
-            <option value="2">Two</option>
-             <option value="3">Three</option>
-
+            <Form.Select defaultValue={defaultBudgetId} ref={budgetIdRef}>
+            {budgets.map(budget => (
+                <option key={budget.id} value={budget.id}>
+                  {budget.name}
+                </option>
+               //console.log(budget.id,'holo')
+              ))}
             </Form.Select>
           </Form.Group>
           <div className="d-flex justify-content-end">

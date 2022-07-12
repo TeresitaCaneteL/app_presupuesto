@@ -1,13 +1,13 @@
 import {Card, ProgressBar, Stack, Button, Container} from "react-bootstrap"
 
-export default function CardBudget({name,amount,max,gray,ExpensesClick}) {
+export default function CardBudget({name,amount,max,gray,onAddExpenseClick,hideButtons,}) {
     const classNames = []
     if (amount > max) {
       classNames.push("bg-danger", "bg-opacity-10")
     } else if (gray) {
       classNames.push("bg-light")
     }
-    console.log(name)
+    //console.log(name)
     return (
       <Container>
       <Card className={classNames.join(" ")}>
@@ -33,21 +33,17 @@ export default function CardBudget({name,amount,max,gray,ExpensesClick}) {
               gray
             />
           )}
-          { (
-            <Stack direction="horizontal" gap="2" className="mt-4">
-              <Button
-                variant="outline-success"
-                className="ms-auto"
-
-
-              >
-                agregar gastos
-              </Button>
-              <Button variant="outline-secondary">
-                ver gastos
-              </Button>
-            </Stack>
-          )}
+          {!hideButtons && (
+          <Stack direction="horizontal" gap="2" className="mt-4">
+            <Button
+              variant="outline-primary"
+              className="ms-auto"
+              onClick={onAddExpenseClick}
+            >
+             Agregar Gasto
+            </Button>
+          </Stack>
+        )}
         </Card.Body>
       </Card>
       </Container>
