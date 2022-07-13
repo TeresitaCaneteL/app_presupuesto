@@ -5,7 +5,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![Alt text](relative/path/to/pag.png?raw=true "Title")
+![Alt text](app_presupuesto/presupuesto/src/pag.png)
 
 ## Available Scripts
 
