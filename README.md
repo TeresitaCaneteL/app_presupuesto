@@ -4,8 +4,7 @@
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-![Alt text](https://github.com/TeresitaCaneteL/app_presupuesto/edit/master/app_presupuesto/presupuesto/src/pag.png)
+<img src="/app_presupuesto/presupuesto/src/pag.png" alt="My cool logo"/>
 
 ## Available Scripts
 
