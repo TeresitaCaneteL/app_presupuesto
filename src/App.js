@@ -12,7 +12,7 @@ function App() {
   const [showAddBudgetModal, setShowAddBudgetModal]= useState(false)
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false)
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState()
-  const {budgets} = useContext(BudgetsContext)
+  const {budgets, getBudgetExpenses} = useContext(BudgetsContext)
 
   const data =[JSON.stringify(budgets)]
 
@@ -30,12 +30,16 @@ function App() {
     </Stack>
     </Container>
             {budgets.map(budget => {
-              console.log(budgets,'budget')
+              //console.log(budgets,'budget')
+              const amount = getBudgetExpenses(budget.id).reduce(
+                (total, expense) => total + expense.amount,
+                0
+              )
            return (
               <CardBudget
                 key={budget.id}
                 name={budget.name}
-                amount={10000}
+                amount={amount}
                 max={budget.max}
                 onAddExpenseClick={() => openAddExpenseModal(budget.id)}
               />

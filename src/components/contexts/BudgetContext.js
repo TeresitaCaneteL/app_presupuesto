@@ -12,6 +12,8 @@ export const BudgetsProvider= ({children }) => {
   const deleteBudget = ()=>{
     setBudgets([]);
   }
+
+  //agregar presupuesto
   function addBudget({ name, max }) {
     setBudgets(prevBudgets => {
       if (prevBudgets.find(budget => budget.name === name)) {
@@ -20,10 +22,15 @@ export const BudgetsProvider= ({children }) => {
       return [...prevBudgets, { id: uuidV4(), name, max }]
     })
   }
+  //agregar gasto de la categoria
   function addExpense({ description, amount, budgetId }) {
     setExpences(prevExpenses => {
       return [...prevExpenses, { id: uuidV4(), description, amount, budgetId }]
     })
+  }
+
+  function getBudgetExpenses(budgetId) {
+    return expenses.filter(expense => expense.budgetId === budgetId)
   }
 
   const context ={
@@ -32,7 +39,8 @@ export const BudgetsProvider= ({children }) => {
     setBudgets,
     expenses,
     setExpences,
-    addExpense
+    addExpense,
+    getBudgetExpenses
   }
 
 
