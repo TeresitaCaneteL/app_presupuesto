@@ -5,7 +5,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![Alt text](app_presupuesto/presupuesto/src/pag.png)
+![Alt text](https://github.com/TeresitaCaneteL/app_presupuesto/edit/master/app_presupuesto/presupuesto/src/pag.png)
 
 ## Available Scripts
 
