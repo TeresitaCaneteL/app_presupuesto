@@ -1,6 +1,11 @@
+
+<img src="/Users/teresitacanete/Documents/app_presupuesto/presupuesto/src/pag.png" alt="My cool logo"/>
 # Getting Started with Create React App
 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+![Alt text](relative/path/to/pag.png?raw=true "Title")
 
 ## Available Scripts
 

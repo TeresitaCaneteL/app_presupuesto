@@ -13,10 +13,7 @@ function App() {
   const [showAddBudgetModal, setShowAddBudgetModal]= useState(false)
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false)
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState()
-  const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState()
-  const {budgets, getBudgetExpenses, expenses} = useContext(BudgetsContext)
-
-
+  const {budgets, getBudgetExpenses} = useContext(BudgetsContext)
 
   function openAddExpenseModal(budgetId) {
     setShowAddExpenseModal(true)
@@ -34,10 +31,7 @@ function App() {
             {budgets.map(budget => {
              //console.log(budgets,'budget')
               const amount = getBudgetExpenses(budget.id).reduce(
-                (total, expense) => total + expense.amount,
-                0
-
-              )
+                (total, expense) => total + expense.amount,0)
 
            return (
 
@@ -46,18 +40,11 @@ function App() {
                 name={budget.name}
                 amount={amount}
                 max={budget.max}
-                onAddExpenseClick={() => openAddExpenseModal(budget.id)}
-
-/>
-
-
-
+                onAddExpenseClick={() => openAddExpenseModal(budget.id)}/>
             )
-
           })}
 
-      <SubCategory
-/>
+      <SubCategory/>
 
           <AddExpenseModal
             show={showAddExpenseModal}
