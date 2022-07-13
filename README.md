@@ -1,5 +1,5 @@
 
-<img src="/Users/teresitacanete/Documents/app_presupuesto/presupuesto/src/pag.png" alt="My cool logo"/>
+
 # Getting Started with Create React App
 
 
