@@ -3,9 +3,11 @@ import { useRef,useContext } from 'react';
 import { BudgetsContext } from '../contexts/BudgetContext'
 
 export default function AddExpenseModal({show, handleClose, defaultBudgetId}) {
+
   const descriptionRef = useRef()
   const amountRef = useRef()
   const budgetIdRef = useRef()
+  const budgetName = useRef()
   const {  addExpense, budgets } = useContext(BudgetsContext);
   //console.log(budgets, 'hola')
 
@@ -15,6 +17,8 @@ export default function AddExpenseModal({show, handleClose, defaultBudgetId}) {
       description: descriptionRef.current.value,
       amount: parseInt(amountRef.current.value),
       budgetId: budgetIdRef.current.value,
+      budgetName: budgetName.current.value,
+
     })
     handleClose()
   }
@@ -37,12 +41,27 @@ export default function AddExpenseModal({show, handleClose, defaultBudgetId}) {
           <Form.Group className="mb-3" controlId="budgetId">
             <Form.Label>Presupuesto</Form.Label>
             <Form.Select defaultValue={defaultBudgetId} ref={budgetIdRef}>
-            {budgets.map(budget => (
+            {budgets.map(budget => {
+              return(
+                <>
                 <option key={budget.id} value={budget.id}>
                   {budget.name}
                 </option>
-               //console.log(budget.id,'holo')
-              ))}
+                </>
+              )})}
+            </Form.Select>
+          </Form.Group>
+          <Form.Group className="mb-3" controlId=" budgetName">
+            <Form.Label>Categoria</Form.Label>
+            <Form.Select defaultValue={defaultBudgetId} ref={budgetName}>
+            {budgets.map(budget => {
+              return(
+                <>
+                <option key={budget.id} value={budget.name}>
+                  {budget.name}
+                </option>
+                </>
+              )})}
             </Form.Select>
           </Form.Group>
           <div className="d-flex justify-content-end">

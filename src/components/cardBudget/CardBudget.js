@@ -33,6 +33,7 @@ export default function CardBudget({name,amount,max,gray,onAddExpenseClick,hideB
               gray
             />
           )}
+
           {!hideButtons && (
           <Stack direction="horizontal" gap="2" className="mt-4">
             <Button
@@ -42,6 +43,7 @@ export default function CardBudget({name,amount,max,gray,onAddExpenseClick,hideB
             >
              Agregar Gasto
             </Button>
+
           </Stack>
         )}
         </Card.Body>

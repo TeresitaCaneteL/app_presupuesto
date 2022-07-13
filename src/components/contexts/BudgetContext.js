@@ -9,8 +9,11 @@ export const BudgetsProvider= ({children }) => {
   const [ budgets, setBudgets ] = UseLocalStorage("budgets", [])
   const [ expenses, setExpences ] = UseLocalStorage("expenses", [])
 
-  const deleteBudget = ()=>{
-    setBudgets([]);
+  function deleteExpense({ id }) {
+    setExpences(prevExpenses => {
+      return prevExpenses.filter(expense => expense.id !== id)
+    })
+
   }
 
   //agregar presupuesto
@@ -23,9 +26,9 @@ export const BudgetsProvider= ({children }) => {
     })
   }
   //agregar gasto de la categoria
-  function addExpense({ description, amount, budgetId }) {
+  function addExpense({ description, amount, budgetId, budgetName}) {
     setExpences(prevExpenses => {
-      return [...prevExpenses, { id: uuidV4(), description, amount, budgetId }]
+      return [...prevExpenses, { id: uuidV4(), description, amount, budgetId,budgetName }]
     })
   }
 
@@ -40,7 +43,8 @@ export const BudgetsProvider= ({children }) => {
     expenses,
     setExpences,
     addExpense,
-    getBudgetExpenses
+    getBudgetExpenses,
+    deleteExpense
   }
 
 
