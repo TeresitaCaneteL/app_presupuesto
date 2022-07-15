@@ -4,8 +4,7 @@
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-![Alt text](relative/path/to/pag.png?raw=true "Title")
+![./app_presupuesto/presupuesto/src/pag.png](https://github.com/TeresitaCaneteL/app_presupuesto/blob/master/src/pag.png?raw=true)
 
 ## Available Scripts
 
