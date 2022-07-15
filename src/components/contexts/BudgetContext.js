@@ -16,13 +16,27 @@ export const BudgetsProvider= ({children }) => {
 
   }
 
+  function deleteBudget({ id }) {
+    setBudgets(prevBudget => {
+      return prevBudget.filter(budget => budget.id !== id)
+    })
+
+  }
   //agregar presupuesto
   function addBudget({ name, max }) {
     setBudgets(prevBudgets => {
       if (prevBudgets.find(budget => budget.name === name)) {
+          const newBudget =[...budgets]
+          for(const e of newBudget) {
+            //console.log(name)
+            if(e.name === name)
+            e.max=e.max += max
+          }
         return prevBudgets
       }
+
       return [...prevBudgets, { id: uuidV4(), name, max }]
+
     })
   }
   //agregar gasto de la categoria

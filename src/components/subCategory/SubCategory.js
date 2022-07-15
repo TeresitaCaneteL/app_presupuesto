@@ -18,7 +18,7 @@ const Subcategoy = (budgetId) => {
           {expenses.map(expense => (
             <Stack direction="horizontal" gap="2" key={expense.id}>
                  <strong><div className="p-9 fs-4">Categoria: {expense.budgetName}</div></strong>
-              <div className="me-auto fs-4">Subcategoria: {expense.description}</div>
+              <div className="me-auto fs-4">Gasto: {expense.description}</div>
               <div className="fs-5">
               monto:  {expense.amount}
               </div>
