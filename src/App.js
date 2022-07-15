@@ -5,6 +5,7 @@ import CardBudget from "./components/cardBudget/CardBudget"
 import SubCategory from "./components/subCategory/SubCategory"
 import AddBudgetModal from "./components/addBudgetModal/AddBudgetModal"
 import AddExpenseModal from "./components/addBudgetModal/AddExpensesModal"
+import TotalBudget from "./components/totalBudget/Totalbudget";
 import { useState,useContext } from 'react';
 import { BudgetsContext } from './components/contexts/BudgetContext'
 
@@ -27,7 +28,13 @@ function App() {
       <Button variant="success" onClick={() => setShowAddBudgetModal(true)}>Agregar presupuesto</Button>
 
     </Stack>
-    </Container>
+
+    <div  style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gap: "1rem",
+            alignItems: "flex-start",
+          }}>
             {budgets.map(budget => {
              //console.log(budgets,'budget')
               const amount = getBudgetExpenses(budget.id).reduce(
@@ -43,14 +50,16 @@ function App() {
                 onAddExpenseClick={() => openAddExpenseModal(budget.id)}/>
             )
           })}
+      <TotalBudget/>
 
+      </div>
       <SubCategory/>
-
           <AddExpenseModal
             show={showAddExpenseModal}
             defaultBudgetId={addExpenseModalBudgetId}
             handleClose={() => setShowAddExpenseModal(false)}/>
           <AddBudgetModal show={showAddBudgetModal} handleClose={()=> setShowAddBudgetModal(false)}/>
+          </Container>
     </>
   );
 }
