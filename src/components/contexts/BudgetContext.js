@@ -26,13 +26,13 @@ export const BudgetsProvider= ({children }) => {
   function addBudget({ name, max }) {
     setBudgets(prevBudgets => {
       if (prevBudgets.find(budget => budget.name === name)) {
-          const newBudget =[...budgets]
+          const newBudget =[...prevBudgets]
           for(const e of newBudget) {
             //console.log(name)
             if(e.name === name)
             e.max=e.max += max
           }
-        return prevBudgets
+        return newBudget
       }
 
       return [...prevBudgets, { id: uuidV4(), name, max }]
